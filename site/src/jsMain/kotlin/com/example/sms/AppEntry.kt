@@ -1,0 +1,40 @@
+package com.example.sms
+
+import androidx.compose.runtime.*
+import com.example.sms.theme.SiteColors
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.core.App
+import com.varabyte.kobweb.silk.SilkApp
+import com.varabyte.kobweb.silk.components.layout.Surface
+import com.varabyte.kobweb.silk.init.InitSilk
+import com.varabyte.kobweb.silk.init.InitSilkContext
+import com.varabyte.kobweb.silk.init.registerStyleBase
+import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.css.px
+
+@InitSilk
+fun initStyles(ctx: InitSilkContext) {
+    ctx.stylesheet.registerStyleBase("html, body") {  Modifier
+        .margin(0.px)
+        .padding(0.px) }
+
+    // Police Poppins sur tout le site
+    ctx.stylesheet.registerStyleBase("body") {
+        Modifier.fontFamily("Poppins", "sans-serif")
+    }
+
+
+}
+
+@App
+@Composable
+fun AppEntry(content: @Composable () -> Unit) {
+    SilkApp {
+        Surface(SmoothColorStyle.toModifier().fillMaxHeight()) {
+            content()
+        }
+    }
+}
