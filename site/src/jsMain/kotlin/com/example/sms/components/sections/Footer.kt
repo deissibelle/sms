@@ -1,27 +1,18 @@
 package com.example.sms.components.sections
 
 import androidx.compose.runtime.Composable
-import com.example.sms.theme.SiteColors
-import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.autoLength
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
+import com.example.sms.components.styles.*
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
-import org.jetbrains.compose.web.ExperimentalComposeWebApi
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Footer
+import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.Footer as HtmlFooter
 
 private data class FooterLink(val label: String, val href: String)
 private data class FooterSection(val title: String, val links: List<FooterLink>)
@@ -54,111 +45,55 @@ private val footerSections = listOf(
 )
 
 @Composable
-fun Footer(modifier: Modifier = Modifier) {
-    Footer(
-        attrs = modifier
-            .fillMaxWidth()
-            .backgroundColor(SiteColors.DeepBlue)
-            .color(Color.white)
-            .toAttrs()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .maxWidth(75.cssRem)
-                .margin(leftRight = autoLength)
-                .padding(top = 1.cssRem, bottom = 1.cssRem, leftRight = 1.5.cssRem),
-          horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .flexWrap(FlexWrap.Wrap)
-                    .gap(8.cssRem),
-                horizontalArrangement = Arrangement.Start
-            ) {
-                Column(
-                    modifier = Modifier
-                        .minWidth(200.px)
-                        .flex(1, 1, 0.px)
-                        .gap(1.cssRem)
-                ) {
+fun Footer() {
+    HtmlFooter(attrs = FooterStyle.toAttrs()) {
+        Div(attrs = FooterContainerStyle.toAttrs()) {
+            Div(attrs = FooterTopStyle.toAttrs()) {
+                Div(attrs = FooterBrandStyle.toAttrs()) {
                     FooterLogo()
-
-                        P(attrs = Modifier.margin(0.px).color(Color.white).lineHeight(1.4).fontSize(0.95.cssRem).toAttrs()) {
-                            Text("Une plateforme puissante")
-                        }
-                        P(attrs = Modifier.margin(0.px).color(Color.white).lineHeight(1.4).fontSize(0.95.cssRem).toAttrs()) {
-                            Text("pour envoyer, automatiser et")
-                        }
-                        P(attrs = Modifier.margin(0.px).color(Color.white).lineHeight(1.4).fontSize(0.95.cssRem).toAttrs()) {
-                            Text("suivre vos SMS en toute")
-                        }
-                        P(attrs = Modifier.margin(0.px).color(Color.white).lineHeight(1.4).fontSize(0.95.cssRem).toAttrs()) {
-                            Text("simplicité.")
-                        }
-
+                    P(attrs = FooterTextStyle.toAttrs()) {
+                        Text("Une plateforme puissante pour envoyer, automatiser et suivre vos SMS en toute simplicité.")
+                    }
                 }
 
-                footerSections.forEach { section ->
-                    Column(
-                        modifier = Modifier
-                            .minWidth(150.px)
-                            .gap(1.cssRem)
-                    ) {
-                        H3(attrs = Modifier.margin(0.px).color(Color.white).fontSize(1.1.cssRem).fontWeight(600).toAttrs()) {
-                            Text(section.title)
-                        }
-
-                        Column(modifier = Modifier.gap(0.75.cssRem)) {
-                            section.links.forEach { link ->
-                                Link(
-                                    path = link.href,
-                                    text = link.label,
-                                    modifier = Modifier
-                                        .color(Color.white)
-                                        .fontSize(0.95.cssRem),
-                                    variant = UndecoratedLinkVariant.then(UncoloredLinkVariant)
-                                )
-                            }
-                        }
-                    }
+                Div(attrs = FooterGroupsStyle.toAttrs()) {
+                    footerSections.forEach { FooterColumn(it) }
                 }
             }
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1.px)
-                    .backgroundColor(SiteColors.Turquoise)
-                    .opacity(0.1)
-                    .margin(topBottom = 1.cssRem)
-            )
+            Div(attrs = FooterDividerStyle.toAttrs())
 
-            P(
-                attrs = Modifier
-                    .margin(0.px)
-                    .fillMaxWidth()
-                    .textAlign(TextAlign.Center)
-                    .color(Color.white)
-                    .fontSize(0.9.cssRem)
-                    .toAttrs()
-            ) {
+            P(attrs = FooterCopyrightStyle.toAttrs()) {
                 Text("© 2026 Orion. Tous droits réservés")
             }
         }
     }
 }
 
-@OptIn(ExperimentalComposeWebApi::class)
+@Composable
+private fun FooterColumn(section: FooterSection) {
+    Div(attrs = FooterColumnStyle.toAttrs()) {
+        H3(attrs = FooterTitleStyle.toAttrs()) { Text(section.title) }
+        Div(attrs = FooterLinkListStyle.toAttrs()) {
+            section.links.forEach { link ->
+                Link(
+                    path = link.href,
+                    text = link.label,
+                    modifier = FooterLinkStyle.toModifier(),
+                    variant = UndecoratedLinkVariant.then(UncoloredLinkVariant)
+                )
+            }
+        }
+    }
+}
+
 @Composable
 private fun FooterLogo() {
     Link("/", variant = UndecoratedLinkVariant.then(UncoloredLinkVariant)) {
         Image(
             src = "/logo_white.png",
             alt = "SMS, retour à l'accueil",
-            modifier = Modifier
-                .height(3.cssRem)
+            modifier = FooterLogoStyle.toModifier()
         )
     }
 }

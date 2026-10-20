@@ -9,4 +9,6 @@ object SiteColors {
     val DeepBlue = Color.rgb(0x003761)
     val Electric = Color.rgb(0x72F3FA)
     val Sky = Color.rgb(0x7DE5FA)
+    val Surface = Color.rgb(0xFAFAFA)
+    val Azure = Color.rgb(0x0B75C9)
 }
