@@ -2,8 +2,8 @@ package com.example.sms.pages
 
 import androidx.compose.runtime.*
 import com.example.sms.components.layouts.PageLayout
-import com.example.sms.components.sections.AutomatisationSection
-import com.example.sms.components.sections.EnvoiSmsSection
+import com.example.sms.components.sections.AutomationSection
+import com.example.sms.components.sections.SendSmsSection
 import com.example.sms.components.sections.HeroSection
 import com.example.sms.components.sections.TrackingBand
 import com.varabyte.kobweb.core.Page
@@ -13,9 +13,9 @@ import com.varabyte.kobweb.core.Page
 fun HomePage() {
     PageLayout("Accueil") {
         HeroSection()
-        EnvoiSmsSection()
+        SendSmsSection()
         TrackingBand()
-        AutomatisationSection()
+        AutomationSection()
     }
 
 }

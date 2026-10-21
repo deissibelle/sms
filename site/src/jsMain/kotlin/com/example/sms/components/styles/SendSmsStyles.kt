@@ -5,46 +5,51 @@ import com.example.sms.theme.SiteColors
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.JustifyContent
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.*
 
-val EnvoiSmsSectionStyle = CssStyle.base {
+val SendSmsSectionStyle = CssStyle.base {
     Modifier
         .fillMaxWidth()
         .backgroundColor(SiteColors.Surface)
         .boxSizing(BoxSizing.BorderBox)
 }
 
-val EnvoiSmsContainerStyle = CssStyle {
+val SendSmsContainerStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
-            .maxWidth(75.cssRem)
-            .margin(leftRight = 0.px)
+            .maxWidth(68.cssRem)
+            .margin(leftRight = autoLength)
             .padding(
                 leftRight = 1.5.cssRem,
                 topBottom = 2.5.cssRem
             )
-            .gap(2.cssRem)
+            .gap(1.5.cssRem)
+            .boxSizing(BoxSizing.BorderBox)
     }
 
     Breakpoint.MD {
         Modifier
-            .margin(leftRight = 0.px)
             .padding(
-                leftRight = 2.5.cssRem,
+                leftRight = 2.cssRem,
                 topBottom = 3.cssRem
             )
-            .gap(3.cssRem)
+            .gap(2.cssRem)
     }
 }
 
-val EnvoiSmsImageColumnStyle = CssStyle {
+
+val SendSmsImageColumnStyle = CssStyle {
     base {
         Modifier
             .flex(1, 1, 20.cssRem)
@@ -60,11 +65,13 @@ val EnvoiSmsImageColumnStyle = CssStyle {
     }
 }
 
-val EnvoiSmsPhotoStyle = CssStyle.base {
+val SendSmsPhotoStyle = CssStyle.base {
     Modifier
         .width(75.percent)
         .height(85.percent)
-        .borderRadius(1.5.cssRem)
+        .objectFit(ObjectFit.Cover)
+        .border(width = 6.px, style = LineStyle.Solid, color = Colors.White)
+        .styleModifier { property("border-radius", "2rem 2rem 0.2rem 2rem") }
         .boxShadow(
             offsetX = 0.px,
             offsetY = 10.px,
@@ -73,7 +80,7 @@ val EnvoiSmsPhotoStyle = CssStyle.base {
         )
 }
 
-val EnvoiSmsContentStyle = CssStyle {
+val SendSmsContentStyle = CssStyle {
     base {
         Modifier
             .flex(1, 1, 20.cssRem)
@@ -87,7 +94,7 @@ val EnvoiSmsContentStyle = CssStyle {
     }
 }
 
-val EnvoiSmsTitleStyle = CssStyle.base {
+val SendSmsTitleStyle = CssStyle.base {
     Modifier
         .margin(0.px)
         .fontSize(2.cssRem)
@@ -96,13 +103,13 @@ val EnvoiSmsTitleStyle = CssStyle.base {
         .textAlign(TextAlign.Center)
 }
 
-val EnvoiSmsIllustrationStyle = CssStyle.base {
+val SendSmsIllustrationStyle = CssStyle.base {
     Modifier
         .width(10.cssRem)
         .height(10.cssRem)
 }
 
-val EnvoiSmsDescriptionStyle = CssStyle.base {
+val SendSmsDescriptionStyle = CssStyle.base {
     Modifier
         .margin(0.px)
         .fontSize(1.35.cssRem)

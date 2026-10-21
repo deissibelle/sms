@@ -2,14 +2,14 @@
 package com.example.sms.components.sections
 
 import androidx.compose.runtime.Composable
-import com.example.sms.components.styles.EnvoiSmsContainerStyle
-import com.example.sms.components.styles.EnvoiSmsContentStyle
-import com.example.sms.components.styles.EnvoiSmsDescriptionStyle
-import com.example.sms.components.styles.EnvoiSmsIllustrationStyle
-import com.example.sms.components.styles.EnvoiSmsImageColumnStyle
-import com.example.sms.components.styles.EnvoiSmsPhotoStyle
-import com.example.sms.components.styles.EnvoiSmsSectionStyle
-import com.example.sms.components.styles.EnvoiSmsTitleStyle
+import com.example.sms.components.styles.SendSmsContainerStyle
+import com.example.sms.components.styles.SendSmsContentStyle
+import com.example.sms.components.styles.SendSmsDescriptionStyle
+import com.example.sms.components.styles.SendSmsIllustrationStyle
+import com.example.sms.components.styles.SendSmsImageColumnStyle
+import com.example.sms.components.styles.SendSmsPhotoStyle
+import com.example.sms.components.styles.SendSmsSectionStyle
+import com.example.sms.components.styles.SendSmsTitleStyle
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -24,45 +24,40 @@ import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun EnvoiSmsSection() {
+fun SendSmsSection() {
     Section(
-        attrs = EnvoiSmsSectionStyle.toAttrs()
+        attrs = SendSmsSectionStyle.toAttrs()
     ) {
         Row(
-            modifier = EnvoiSmsContainerStyle
+            modifier = SendSmsContainerStyle
                 .toModifier()
                 .flexWrap(FlexWrap.Wrap),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
-                modifier = EnvoiSmsImageColumnStyle.toModifier(),
+                modifier = SendSmsImageColumnStyle.toModifier(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     src = "/envoi.jpeg",
                     alt = "Professionnel utilisant une plateforme de messagerie SMS",
-                    modifier = EnvoiSmsPhotoStyle.toModifier()
+                    modifier = SendSmsPhotoStyle.toModifier()
                 )
             }
-
             Column(
-                modifier = EnvoiSmsContentStyle.toModifier(),
+                modifier = SendSmsContentStyle.toModifier(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 H2(
-                    attrs = EnvoiSmsTitleStyle.toAttrs()
+                    attrs = SendSmsTitleStyle.toAttrs()
                 ) {
-                    Text("Envoi de SMS")
+                    Text("Send de SMS")
                 }
 
-                Image(
-                    src = "/images/sms-bubbles.png",
-                    alt = "Bulles illustrant les échanges de SMS",
-                    modifier = EnvoiSmsIllustrationStyle.toModifier()
-                )
+                SmsBubblesIllustration()
 
                 P(
-                    attrs = EnvoiSmsDescriptionStyle.toAttrs()
+                    attrs = SendSmsDescriptionStyle.toAttrs()
                 ) {
                     Text("en masse ou individuels")
                 }

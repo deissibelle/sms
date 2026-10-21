@@ -29,9 +29,9 @@ val TrackingBandStyle = CssStyle {
             .backgroundColor(SiteColors.DeepBlue)
             .backgroundImage(
                 linearGradient(
-                    from = SiteColors.Turquoise,
-                    to = SiteColors.DeepBlue,
-                    dir = LinearGradient.Direction.ToRight
+                    from = SiteColors.DeepBlue,
+                    to = SiteColors.Turquoise,
+                    dir = LinearGradient.Direction.ToBottomLeft
                 )
             )
             .styleModifier {
@@ -45,7 +45,6 @@ val TrackingBandStyle = CssStyle {
             .gap(4.cssRem)
     }
 }
-
 
 val TrackingTitleStyle = CssStyle {
     base {
