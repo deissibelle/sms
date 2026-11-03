@@ -13,6 +13,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.extendedByBase
@@ -72,18 +73,63 @@ val HeroTextColumnStyle = CssStyle {
     }
 }
 
+val HeroSlideInLeft = Keyframes {
+    from { Modifier.opacity(0).translateX((-2).cssRem) }
+    to { Modifier.opacity(1).translateX(0.px) }
+}
+
+val HeroFadeUp = Keyframes {
+    from { Modifier.opacity(0).translateY(1.5.cssRem) }
+    to { Modifier.opacity(1).translateY(0.px) }
+}
+
+val HeroPopIn = Keyframes {
+    from {
+        Modifier
+            .opacity(0)
+            .styleModifier { property("transform", "translateY(2rem) scale(0.92)") }
+    }
+    to {
+        Modifier
+            .opacity(1)
+            .styleModifier { property("transform", "translateY(0) scale(1)") }
+    }
+}
 val HeroTitleStyle = CssStyle {
-    base { Modifier.margin(0.px).fontSize(1.75.cssRem).fontWeight(700).lineHeight(1.25) }
+    base {
+        Modifier
+            .margin(0.px)
+            .fontSize(1.75.cssRem)
+            .fontWeight(700)
+            .lineHeight(1.25)
+            .animation(
+                HeroSlideInLeft.toAnimation(
+                    duration = 700.ms,
+                    timingFunction = AnimationTimingFunction.EaseOut,
+                    fillMode = AnimationFillMode.Backwards
+                )
+            )
+    }
     Breakpoint.MD { Modifier.fontSize(1.9.cssRem) }
     Breakpoint.LG { Modifier.fontSize(2.25.cssRem) }
 }
-
 val HeroAccentStyle = CssStyle.base { Modifier.color(SiteColors.Turquoise) }
 
 val HeroSubtitleStyle = CssStyle.base {
-    Modifier.margin(0.px).maxWidth(20.5.cssRem).fontSize(1.cssRem).lineHeight(1.5)
+    Modifier
+        .margin(0.px)
+        .maxWidth(20.5.cssRem)
+        .fontSize(1.cssRem)
+        .lineHeight(1.5)
+        .animation(
+            HeroFadeUp.toAnimation(
+                duration = 700.ms,
+                delay = 150.ms,
+                timingFunction = AnimationTimingFunction.EaseOut,
+                fillMode = AnimationFillMode.Backwards
+            )
+        )
 }
-
 val HeroCtaStyle = CssStyle {
     base {
         Modifier
@@ -100,6 +146,14 @@ val HeroCtaStyle = CssStyle {
             .fontSize(1.05.cssRem)
             .fontWeight(700)
             .textDecorationLine(TextDecorationLine.None)
+            .animation(
+                HeroFadeUp.toAnimation(
+                    duration = 700.ms,
+                    delay = 300.ms,
+                    timingFunction = AnimationTimingFunction.EaseOut,
+                    fillMode = AnimationFillMode.Backwards
+                )
+            )
     }
     hover {
         Modifier
@@ -110,6 +164,7 @@ val HeroCtaStyle = CssStyle {
         Modifier.width(autoLength)
     }
 }
+
 
 
 val HeroVisualsStyle = CssStyle {
@@ -134,14 +189,42 @@ val HeroImageStyle = CssStyle.base {
         .objectFit(ObjectFit.Cover)
 }
 
+
 val HeroImageTopLeftStyle = HeroImageStyle.extendedByBase {
-    Modifier.top(0.px).left(0.px).width(53.percent).height(68.percent)
+    Modifier
+        .top(0.px).left(0.px).width(53.percent).height(68.percent)
+        .animation(
+            HeroPopIn.toAnimation(
+                duration = 800.ms,
+                delay = 250.ms,
+                timingFunction = AnimationTimingFunction.EaseOut,
+                fillMode = AnimationFillMode.Backwards
+            )
+        )
 }
 
 val HeroImageRightStyle = HeroImageStyle.extendedByBase {
-    Modifier.top(20.5.percent).right(0.px).width(58.percent).height(73.5.percent)
+    Modifier
+        .top(20.5.percent).right(0.px).width(58.percent).height(73.5.percent)
+        .animation(
+            HeroPopIn.toAnimation(
+                duration = 800.ms,
+                delay = 450.ms,
+                timingFunction = AnimationTimingFunction.EaseOut,
+                fillMode = AnimationFillMode.Backwards
+            )
+        )
 }
 
 val HeroImageBottomStyle = HeroImageStyle.extendedByBase {
-    Modifier.bottom(0.px).left(18.6.percent).width(34.6.percent).height(44.percent)
+    Modifier
+        .bottom(0.px).left(18.6.percent).width(34.6.percent).height(44.percent)
+        .animation(
+            HeroPopIn.toAnimation(
+                duration = 800.ms,
+                delay = 650.ms,
+                timingFunction = AnimationTimingFunction.EaseOut,
+                fillMode = AnimationFillMode.Backwards
+            )
+        )
 }

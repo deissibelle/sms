@@ -106,7 +106,7 @@ val FooterDividerStyle = CssStyle.base {
         .fillMaxWidth()
         .height(1.px)
         .backgroundColor(SiteColors.Turquoise)
-        .opacity(0.1)
+        .opacity(0.2)
         .margin(topBottom = 1.5.cssRem)
 }
 
