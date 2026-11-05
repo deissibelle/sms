@@ -3,8 +3,8 @@ package com.example.sms.components.layouts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import com.example.sms.components.sections.Footer
-import com.example.sms.components.sections.NavHeader
+import com.example.sms.components.sections.common.Footer
+import com.example.sms.components.sections.common.NavHeader
 import com.example.sms.theme.SiteColors
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope

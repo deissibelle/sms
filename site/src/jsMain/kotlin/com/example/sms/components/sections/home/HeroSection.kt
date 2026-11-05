@@ -1,4 +1,4 @@
-package com.example.sms.components.sections
+package com.example.sms.components.sections.home
 
 import androidx.compose.runtime.Composable
 import com.example.sms.components.styles.*
@@ -21,7 +21,7 @@ fun HeroSection() {
                 P(attrs = HeroSubtitleStyle.toAttrs()) {
                     Text("Une plateforme puissante pour envoyer, automatiser et suivre vos SMS en toute simplicité.")
                 }
-                A(href = "/services/envoi", attrs = HeroCtaStyle.toAttrs()) {
+                A(href = "/nouveau-message", attrs = HeroCtaStyle.toAttrs()) {
                     Text("Commencer à envoyer")
                 }
             }

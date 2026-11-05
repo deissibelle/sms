@@ -1,4 +1,4 @@
-package com.example.sms.components.sections
+package com.example.sms.components.sections.common
 
 import androidx.compose.runtime.*
 import com.example.sms.components.styles.*
@@ -15,20 +15,16 @@ import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.icons.fa.FaAddressBook
 import com.varabyte.kobweb.silk.components.icons.fa.FaBars
 import com.varabyte.kobweb.silk.components.icons.fa.FaBell
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendarCheck
 import com.varabyte.kobweb.silk.components.icons.fa.FaChevronDown
 import com.varabyte.kobweb.silk.components.icons.fa.FaCircleExclamation
 import com.varabyte.kobweb.silk.components.icons.fa.FaEye
-import com.varabyte.kobweb.silk.components.icons.fa.FaEyeSlash
 import com.varabyte.kobweb.silk.components.icons.fa.FaFile
 import com.varabyte.kobweb.silk.components.icons.fa.FaFileImport
 import com.varabyte.kobweb.silk.components.icons.fa.FaPaperPlane
-import com.varabyte.kobweb.silk.components.icons.fa.FaPerson
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
-import com.varabyte.kobweb.silk.components.icons.fa.FaUserGroup
 import com.varabyte.kobweb.silk.components.icons.fa.FaXmark
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.navigation.Link

@@ -1,11 +1,9 @@
-
-package com.example.sms.components.sections
+package com.example.sms.components.sections.home
 
 import androidx.compose.runtime.Composable
 import com.example.sms.components.styles.SendSmsContainerStyle
 import com.example.sms.components.styles.SendSmsContentStyle
 import com.example.sms.components.styles.SendSmsDescriptionStyle
-import com.example.sms.components.styles.SendSmsIllustrationStyle
 import com.example.sms.components.styles.SendSmsImageColumnStyle
 import com.example.sms.components.styles.SendSmsPhotoStyle
 import com.example.sms.components.styles.SendSmsSectionStyle

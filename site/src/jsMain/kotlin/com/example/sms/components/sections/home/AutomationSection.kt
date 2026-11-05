@@ -1,5 +1,4 @@
-
-package com.example.sms.components.sections
+package com.example.sms.components.sections.home
 
 import androidx.compose.runtime.Composable
 import com.example.sms.components.styles.AutomationContainerStyle

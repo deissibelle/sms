@@ -94,7 +94,7 @@ val SendSmsContentStyle = CssStyle {
     }
 }
 
-val SendSmsTitleStyle = CssStyle.base {
+val SendSmsHomeTitleStyle = CssStyle.base {
     Modifier
         .margin(0.px)
         .fontSize(2.cssRem)

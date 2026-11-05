@@ -12,4 +12,5 @@ object SiteColors {
     val Surface = Color.rgb(0xFAFAFA)
     val Azure = Color.rgb(0x0B75C9)
     val background = Color.rgb(0xFAF7F7)
+    val GrayText = Color.rgb(0x474747)
 }
